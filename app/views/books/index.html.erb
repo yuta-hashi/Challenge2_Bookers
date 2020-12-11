@@ -1,6 +1,5 @@
 <h1>Books</h1>
 <!--delete時に出力-->
-<p id="notice"></p>
 
 <!--投稿一覧機能-->
 <table>
@@ -13,13 +12,13 @@
   </thead>
 
   <tbody>
-    <%= @books.each do |books| %>
+    <% @books.each do |book| %>
     <tr>
-      <td><%= blogs.title %></td>
-      <td><%= blogs.body %></td>
+      <td><%= book.title %></td>
+      <td><%= book.body %></td>
       <td><%= link_to "Show", book_path(book) %></td>
       <td><%= link_to "edit", edit_book_path(book) %></td>
-      <td><%= link_to "Destroy", book_path %></td>
+      <td><%= link_to "Destroy", book_path(book) %></td>
     </tr>
     <% end %>
   </tbody>
@@ -27,7 +26,7 @@
 
 <!--新規投稿機能-->
 <h2>New book</h2>
-<%= form_with model:@book do |f| %>
+<%= form_with model:@book, local: true do |f| %>
 <div class="field">
   <%= f.label :title %><br>
   <%= f.text_field :title %>
