@@ -1,3 +1,9 @@
+<!--FlashMessageの表示-->
+<p id=notice>
+  <% flash.each do |kye, value| %>
+  <%= value %>
+  <% end %>
+</p>
 <!--Title表示-->
 <p>
   <strong>Title:</strong>
@@ -11,8 +17,6 @@
 </p>
 
 <!--Editリンクとindexリンク-->
-<p>
-  <%= link_to "Edit", edit_book_path(params[:id]) %>
-  |
-  <a class="back" href=/books>Back</a>
-</p>
+<%= link_to "Edit", edit_book_path(params[:id]), {class: "edit_#{params[:id]}"} %>
+|
+<a class="back" href=/books>Back</a>
