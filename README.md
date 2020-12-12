@@ -1,24 +1,18 @@
-# README
+# DMM WEBCAMP Callenge2_Bookers
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+DMM WEBCAMPのアプリケーションを完成させようの提出課題です。
 
-Things you may want to cover:
+## 使用した言語
 
-* Ruby version
+* HTML
 
-* System dependencies
+* CSS
 
-* Configuration
+* Ruby
 
-* Database creation
+## version
 
-* Database initialization
+* Ruby 2.6.2
 
-* How to run the test suite
+* rails 2.5.4.4
 
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...

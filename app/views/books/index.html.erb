@@ -1,6 +1,11 @@
-<h1>Books</h1>
-<!--delete時に出力-->
+<!--FlashMessage-->
+<p id="notice">
+  <% flash.each do |kye, value| %>
+  <%= value %>
+  <% end %>
+</p>
 
+<h1>Books</h1>
 <!--投稿一覧機能-->
 <table>
   <thead>
@@ -16,24 +21,43 @@
     <tr>
       <td><%= book.title %></td>
       <td><%= book.body %></td>
-      <td><%= link_to "Show", book_path(book) %></td>
-      <td><%= link_to "edit", edit_book_path(book) %></td>
-      <td><%= link_to "Destroy", book_path(book) %></td>
+      <td><%= link_to "Show", book_path(book), {class: "show_#{book.id}"} %></td>
+      <td><%= link_to "Edit", edit_book_path(book), {class: "edit_#{book.id}"} %></td>
+      <td><%= link_to "Destroy", book_path(book), method: :delete, data: {confirm: "Are you sure?"}, class: "destroy_#{book.id}" %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
 
-<!--新規投稿機能-->
 <h2>New book</h2>
+
+
+
+<!--新規投稿機能-->
 <%= form_with model:@book, local: true do |f| %>
+
+<% if @book.errors.any? %>
+<div id="error_explanation">
+  <h2>
+    <%= pluralize(@book.errors.count, "error") %> prohibited this book from being saved:
+  </h2>
+  <ul>
+    <% @book.errors.full_messages.each do |message| %>
+    <li>
+      <%= message %>
+    </li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
 <div class="field">
-  <%= f.label :title %><br>
+  <%= f.label :title %>
   <%= f.text_field :title %>
 </div>
 
 <div class="field">
-  <%= f.label :body %><br>
+  <%= f.label :body %>
   <%= f.text_area :body %>
 </div>
 
